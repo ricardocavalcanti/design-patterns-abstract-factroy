@@ -1,29 +1,40 @@
 # 💡 Design Pattern: Abstract Factory (Java)
 
-Este repositório demonstra a aplicação do padrão de projeto Factory Method com um exemplo de sistema de notificações utilizando Java puro.
+Este repositório demonstra a aplicação do padrão de projeto Abstract Factory com um exemplo de sistema de notificações utilizando Java puro.
 
 ---
 
 ## 🎯 Objetivo
 
-O Factory Method define uma interface para criação de objetos, mas permite que as subclasses decidam qual classe instanciar. Ele promove:
-- Baixo acoplamento entre classes;
-- Maior extensibilidade (Open/Closed Principle);
-- Substituição do uso de `new` por fábricas especializadas.
+Fornecer uma interface para criar famílias de objetos relacionados sem depender de classes concretas diretamente.
+- Código aberto para extensão e fechado para modificação (OCP).
+- Facilita a criação de sistemas multiplataforma.
+- Alto desacoplamento entre cliente e produtos concretos.
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```
-design-patterns-factory/
+design-patterns-abstract-factory/
 ├── src/
 │   └── br/
 │       └── com/
 │           └── pattern/
-│               ├── factory/               <- Interface Notification, classes concretas e fábricas
-│               ├── service/               <- Serviço que usa a factory
-│               └── Main.java              <- Classe com o exemplo funcional
+│               ├── factory/                  <- Só as Abstract Factories e as Fábricas concretas
+│               │   ├── NotificationFactory.java
+│               │   ├── MobileNotificationFactory.java
+│               │   └── WebNotificationFactory.java
+│               ├── products/                 <- Produtos (interfaces e implementações concretas)
+│               │   ├── MessageNotification.java
+│               │   ├── AlertNotification.java
+│               │   ├── SMSNotification.java
+│               │   ├── PushNotification.java
+│               │   ├── EmailNotification.java
+│               │   ├── WebPushNotification.java
+│               ├── service/                  <- Serviços que usam as factories
+│               │   └── NotificationApplication.java
+│               └── Main.java
 ├── .gitignore
 ├── README.md
 ```
@@ -41,7 +52,7 @@ design-patterns-factory/
 - mvn compile
 
 ### Execute
-- mvn exec:java -Dexec.mainClass="br.com.pattern.factory.Main"
+- mvn exec:java -Dexec.mainClass="br.com.pattern.Main"
 
 ---
 
